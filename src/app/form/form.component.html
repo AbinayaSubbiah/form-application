@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" #simpleFrom="ngForm">
+  <div class="form-group">
+    <label for="mail">Email</label>
+    <input type="email" class="form-control" name="mail" id="mail" [(ngModel)]="model.email" email #mail=ngModel>
+  </div>
+  <div style="background-color: beige; width: 30%" [hidden]="mail.valid">Invalid mail id</div>
+
+  <div class="form-group">
+    <label for="option">Options</label>
+    <select class="form-control" name="option" [(ngModel)]="model.option" required #option=ngModel>
+      <option value="basic">Basic</option>
+      <option value="advanced">Advanced</option>
+      <option value="pro">pro</option>
+    </select>
+  </div>
+  <div style="background-color: beige; width: 30%" [hidden]="option.valid">Option is required</div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" minlength="5" name="password" id="password" [(ngModel)]="model.password" required
+      #password=ngModel>
+  </div>
+  <div style="background-color: beige; width: 30%" [hidden]="password.valid">Password should grater than lenght 5</div>
+  <button [disabled]="!simpleFrom.valid " type="submit">Submit</button>
+
+</form>
